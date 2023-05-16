@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.css";
 
 export default function LoginPage() {
     // states
@@ -50,15 +51,15 @@ export default function LoginPage() {
     function renderErrorMessage(name) {
         if (name == errorType) {
             return name == "wrong username"
-                   ? <div>Invalid Username</div>
-                   : <div>Wrong Password</div>;
+                   ? <div class = "error">Invalid Username</div>
+                   : <div class = "error">Wrong Password</div>;
         }
     }
 
     // render form ui
     const renderForm = (
         <form onSubmit={handleSubmit}>
-            <div className="usernameInput">
+            <div className="inputContainer">
                 <label> Username:  </label>
                 <input 
                     type = "text"
@@ -67,7 +68,7 @@ export default function LoginPage() {
                     onChange = {handleUnameChange}></input>
                 {renderErrorMessage("wrong username")}
             </div>
-            <div className="passwordInput">
+            <div className="inputContainer">
                 <label> Password: </label>
                 <input
                     type = "password"
@@ -84,15 +85,15 @@ export default function LoginPage() {
 
 
     return (
-        <header>
+        <div class="app">
             {isSubmitted 
              ? <h1>Signed in</h1> // route to home page 
              : <>
-               <h1>Welcome to our page!</h1>
-               <h2>Sign In</h2>
+               <h1 class = "title">Welcome to our page!</h1>
+               <h2 class = "smallTitle">Sign In</h2>
                 {renderForm}
                </>
              }
-        </header>
+        </div>
     )
 }
